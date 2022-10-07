@@ -3,10 +3,6 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /*** 
  * `quotes` array 
 ***/
@@ -58,24 +54,6 @@ function getRandomQuote() {
   const randomNum = Math.floor(Math.random() * quotes.length);
   return quotes[randomNum];
 }
-/*
-Create a function named printQuote.
-
-You will program the printQuote function to perform three tasks: call the getRandomQuote function, 
-use the returned quote object to build a string of HTML and quote properties, then use that string to display a random quote in the browser.
-
-In the body of the printQuote function, create a variable to store a random quote object from the getRandomQuote() function.
-
-Create another variable to store the HTML string. Set it equal to a string containing two <p> elements. 
-Use this code snippet as a guide for what the HTML string should look like at this point:
-
-
-<p class="quote"> A random quote </p>
-<p class="source"> quote source
-  <span class="citation"> quote citation </span>
-  <span class="year"> quote year </span>
-</p>
-*/
 
 /**
  * `printQuote`
@@ -99,10 +77,12 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = htmlStr;
 }
 
-
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
+/*** 
+ * EVENT LISTENERS
 ***/
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+/***
+ *  SET INTERVAL
+***/
+setInterval(printQuote, 5000);

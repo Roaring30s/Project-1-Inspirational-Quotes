@@ -3,13 +3,15 @@
  * Random Quote Generator - CSS
  */
 
- @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i&display=swap');
 
 body {
   background-color: rgb(58, 193, 98);
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Roboto', serif;
   padding: 5px;
+
 }
 
 header {
@@ -23,12 +25,16 @@ header {
 }
 
 h1 {
-  text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.3);
+  font-weight: 100;
 }
+
+p {
+  font-weight: 100;
+}
+
 
 .load-quote {
   color: #fff;
-  text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.3);
   width: 12em;
   max-height: 75px;
   margin-top: 20px;
@@ -38,6 +44,7 @@ h1 {
   border-radius: 4px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   transition: 0.5s;
+  font-weight: 100;
 }
 
 .load-quote:hover {
