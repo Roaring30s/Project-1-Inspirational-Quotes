@@ -18,6 +18,7 @@ const quotes = [
     source: "Napoleon Hill",
     citation: "Think and Grow Rich",
     year: "1937",
+    tags: "Educational",
     colorScheme: ["#7bf240", "#2cd9bc"]
   },
   {
@@ -25,6 +26,7 @@ const quotes = [
     source: "Benjamin Franklin",
     citation: "",
     year: "",
+    tags: "Business",
     colorScheme: ["#F8B195", "#F67280"]
   },
   {
