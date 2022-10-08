@@ -18,7 +18,7 @@ const quotes = [
     source: "Napoleon Hill",
     citation: "Think and Grow Rich",
     year: "1937",
-    tags: "Educational",
+    tags: "#Educational",
     colorScheme: ["#7bf240", "#2cd9bc"]
   },
   {
@@ -26,7 +26,7 @@ const quotes = [
     source: "Benjamin Franklin",
     citation: "",
     year: "",
-    tags: "Business",
+    tags: "#Business",
     colorScheme: ["#F8B195", "#F67280"]
   },
   {
@@ -48,6 +48,7 @@ const quotes = [
     source: "Calvin Coolidge",
     citation: "The Dallas Morning News",
     year: "1929",
+    tags: "#Politics",
     colorScheme: ["#45ADA8", "#547980"]
   },
   {
@@ -55,6 +56,7 @@ const quotes = [
     source: "Steve Jobs",
     citation: "",
     year: "",
+    tags: "#Technology",
     colorScheme: ["#A7226E", "#F7DB4F"]
   }
 ];
@@ -80,6 +82,7 @@ function getRandomQuote() {
 
 function printQuote() {
   const quoteObj = getRandomQuote();
+  let randomNumColor = Math.floor(Math.random() * quotes.length); //Fetch Random Number for Color Scheme
   let htmlStr = `
     <p class="quote"> ${quoteObj.quote} </p>
     <p class="source"> ${quoteObj.source}
@@ -90,9 +93,14 @@ function printQuote() {
   if (quoteObj.year) {//Check if year exists
     htmlStr += `<span class="year"> ${quoteObj.year} </span>`;
   }
+  if (quoteObj.tags) {//Check if tags exists
+    htmlStr += `<span class="tags"> ${quoteObj.tags} </span>`;
+  }
   htmlStr += `</p>`;
   document.getElementById('quote-box').innerHTML = htmlStr;
-  const color = quoteObj.colorScheme;
+  let color = quoteObj.colorScheme;
+  color[0] = color[0].slice(0, -1) + randomNumColor;
+  color[1] = color[1].slice(0, -1) + randomNumColor;
   document.body.style.backgroundImage = `linear-gradient(100deg,${color[0]},${color[1]},${color[0]},${color[1]})`;
   fadeIn(document.getElementById('quote-box'), 2000);
 }
