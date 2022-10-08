@@ -3,15 +3,20 @@
  * Random Quote Generator - CSS
  */
 
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i&display=swap');
 
 body {
-  background-color: rgb(58, 193, 98);
+  background-image: linear-gradient(100deg,
+      #A7226E,
+      #F7DB4F,
+      #A7226E,
+      #F7DB4F);
+  background-size: 400% 400%;
+  height: 100vh;
   color: white;
   font-family: 'Roboto', serif;
   padding: 5px;
-
+  animation: gradient 20s ease infinite;
 }
 
 header {
@@ -169,5 +174,19 @@ p {
 
   .source {
     font-size: 1.25rem;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
