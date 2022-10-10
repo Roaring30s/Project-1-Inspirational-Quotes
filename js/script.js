@@ -10,6 +10,18 @@ project 1 - A Random Quote Generator
 let lastIndex = 0;
 
 /*** 
+ * `colorScheme` nested array 
+***/
+const colorScheme = [
+  ["#7bf240", "#2cd9bc"],
+  ["#F8B195", "#F67280"],
+  ["#EC2049", "#F26B38"],
+  ["#F9CDAD", "#C8C8A9"],
+  ["#45ADA8", "#547980"],
+  ["#A7226E", "#F7DB4F"]
+];
+
+/*** 
  * `quotes` array 
 ***/
 const quotes = [
@@ -18,53 +30,57 @@ const quotes = [
     source: "Napoleon Hill",
     citation: "Think and Grow Rich",
     year: "1937",
-    tags: "#Educational",
-    colorScheme: ["#7bf240", "#2cd9bc"]
+    tags: "#Educational"
   },
   {
     quote: "An investment in knowledge pays the best interest.",
     source: "Benjamin Franklin",
     citation: "",
     year: "",
-    tags: "#Business",
-    colorScheme: ["#F8B195", "#F67280"]
+    tags: "#Business"
   },
   {
     quote: "Learn as if you will live forever, live like you will die tomorrow.",
     source: "Mahatma Gandhi",
     citation: "",
-    year: "",
-    colorScheme: ["#EC2049", "#F26B38"]
+    year: ""
   },
   {
     quote: "Success is not final; failure is not fatal: It is the courage to continue that counts.",
     source: "Winston Churchill",
     citation: "",
-    year: "",
-    colorScheme: ["#F9CDAD", "#C8C8A9"]
+    year: ""
   },
   {
     quote: "Nothing in the world can take the place of Persistence.",
     source: "Calvin Coolidge",
     citation: "The Dallas Morning News",
     year: "1929",
-    tags: "#Politics",
-    colorScheme: ["#45ADA8", "#547980"]
+    tags: "#Politics"
   },
   {
     quote: "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you.",
     source: "Steve Jobs",
     citation: "",
     year: "",
-    tags: "#Technology",
-    colorScheme: ["#A7226E", "#F7DB4F"]
+    tags: "#Technology"
   }
 ];
 
 /**
+ * `getRandomColorScheme`
+ * Randomly selects a color array for background
+ * @returns {array} selectedScheme - returns array containing two hex colors
+ */
+function getRandomColorScheme() {
+  const randomNum = Math.floor(Math.random() * colorScheme.length);
+  return colorScheme[randomNum];
+}
+
+/**
  * `getRandomQuote`
  * Randomly selects a quote from the quotes object array
- * @returns {array} quote - returns object from quotes variable
+ * @returns {object} quote - returns object from quotes variable
  */
 function getRandomQuote() {
   let randomNum = Math.floor(Math.random() * quotes.length);
@@ -82,7 +98,6 @@ function getRandomQuote() {
 
 function printQuote() {
   const quoteObj = getRandomQuote();
-  let randomNumColor = Math.floor(Math.random() * quotes.length); //Fetch Random Number for Color Scheme
   let htmlStr = `
     <p class="quote"> ${quoteObj.quote} </p>
     <p class="source"> ${quoteObj.source}
@@ -98,9 +113,7 @@ function printQuote() {
   }
   htmlStr += `</p>`;
   document.getElementById('quote-box').innerHTML = htmlStr;
-  let color = quoteObj.colorScheme;
-  color[0] = color[0].slice(0, -1) + randomNumColor;
-  color[1] = color[1].slice(0, -1) + randomNumColor;
+  let color = getRandomColorScheme();
   document.body.style.backgroundImage = `linear-gradient(100deg,${color[0]},${color[1]},${color[0]},${color[1]})`;
   fadeIn(document.getElementById('quote-box'), 2000);
 }
@@ -113,8 +126,8 @@ function printQuote() {
 function fadeIn(element, duration = 600) {
   element.style.display = '';
   element.style.opacity = 0;
-  var last = +new Date();
-  var tick = function () {
+  let last = +new Date();
+  let tick = function () {
     element.style.opacity = +element.style.opacity + (new Date() - last) / duration;
     last = +new Date();
     if (+element.style.opacity < 1) {
